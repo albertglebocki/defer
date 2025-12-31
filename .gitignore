@@ -1,0 +1,14 @@
+*.o
+*.out
+*.exe
+*.so
+*.a
+
+*~
+*.swp
+.vscode/
+.idea/
+*.dSYM/
+*.DS_Store
+
+build/
