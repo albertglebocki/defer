@@ -1,19 +1,21 @@
-TARGET = main.out
+TARGET = build/example.out
 
 CC = gcc
 CFLAGS = -g -O0 -Wall -Wextra -std=c99
 
-SOURCES = main.c
-
-OBJECTS = $(SOURCES:.c=.o)
+SOURCES = example.c
+OBJECTS = $(patsubst %.c,build/%.o,$(SOURCES))
 
 all: $(TARGET)
 
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS) | build
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-%.o: %.c
+build/%.o: %.c | build
 	$(CC) $(CFLAGS) -c $< -o $@
 
+build:
+	mkdir -p build
+
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -rf build

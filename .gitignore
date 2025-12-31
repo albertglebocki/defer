@@ -10,5 +10,6 @@
 .idea/
 *.dSYM/
 *.DS_Store
+*.bak
 
 build/
