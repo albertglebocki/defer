@@ -1,6 +1,15 @@
-The following is a simple implementation of a defer mechanism in C, allowing automatic code execution
-at the end of a defined scope. This helps with resources management, and prevents memory related issues.
+```
+The following is a simple implementation of a defer mechanism for
+the C programming language, allowing for automatic code execution
+at the end of a predefined scope. This helps with resources
+management, and prevents memory related issues.
 
-To see the example usage, please refer to `example.c` file in this repository.
+To use the defer module in your codebase just include the header:
 
-To use the library in your codebase just include the `defer.h` header.
+#include "defer.h"
+
+Note: This implementation expects the predefined scope to finish
+its execution. If at any point in time code is stopped before the
+end of the scoped (i.e. return from a function), the previously
+deferred block will not be invoked, which may lead to issues.
+```
