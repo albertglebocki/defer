@@ -19,3 +19,6 @@ build:
 
 clean:
 	rm -rf build
+
+run:
+	./$(TARGET)

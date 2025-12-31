@@ -8,10 +8,10 @@
 #if defined(__GNUC__) || defined(__TINYC__)
     #define _defer_label(prefix, count) prefix ## count
 
-    #define scope(...) do {                                                     \
+    #define scope(_inner_scope) do {                                                     \
         unsigned char _defer_count = 0;                                         \
         void *_defer_stack[_MAX_DEFERRED_BLOCKS] = {0};                         \
-        __VA_ARGS__                                                             \
+        _inner_scope                                                            \
         _defer_clean:                                                           \
             while (_defer_count > 0) {                                          \
                 goto *_defer_stack[--_defer_count];                             \
